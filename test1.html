@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>HTML Learn</title>
+	
+		<link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
+		<link rel="stylesheet" type="text/css" href="css.css">
+
+		<!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.1/p5.min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.1/addons/p5.dom.min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.1/addons/p5.sound.min.js"></script> -->
+
+		<script type="text/javascript" src="sketch.js"></script>
+	</head>
+
+	<body>
+		<header id="head">
+			<nav>
+				<ul>
+					<li><a href="#head">HOME</a></li>
+					<li><a href="#scLink">About</a></li>
+					<li><a href="#zLink">Contact</a></li>
+					<li><a href="#">LOG IN</a></li>
+				</ul>
+			</nav>
+		</header>
+
+		<div id="wrapper">
+			<section id="sectionGetLink">
+				<h2>GET LINK MUSIC</h2>
+				<div id="divGetLink">
+					<input type="search" id="scLink" placeholder="Soundcloud link here.." value="https://soundcloud.com/h3roapp3ntice/sets/future-bass">
+					<input type="button" id="loadSc" class="butload" value="Get link">
+					<br>
+					<input type="search" id="zLink" placeholder="Zingmp3 ID Song here.." value="LmxmTLGaJkzSEcdymyFmZGyLWdZWJdxDd">
+					<input type="button" id="loadZ" class="butload" value="Get link">
+					<br>
+					<label class="custom-file-upload">
+					    <input type="file"/>
+					    Choose File Playlist
+					</label>
+				</div>
+			</section>
+
+			<section id="sectionResult">
+				<h2>RESULT</h2>
+				<div id="divResult">
+					<ul id="ulResult"></ul>
+				</div>
+			</section>
+		</div>
+
+		<footer></footer>
+
+	</body>
+</html>
+
+
+<!-- https://soundcloud.com/and1-83/sets/favourite-songs-spring-2015
+https://soundcloud.com/h3roapp3ntice/sets/future-bass -->
+<!-- https://soundcloud.com/the-traphouse/quiero-repetir -->
