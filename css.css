@@ -1,55 +1,57 @@
 html body {
-	font-family: Consolas ;
-    margin: 0;
-    padding: 0;
-    background-color: #222;
+	font-family: Consolas;
+	margin: 0;
+	padding: 0;
+	background-color: #222;
 }
 
 /* //======  Header   ========== */
 header ul {
-    width: 100%;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: rgba(50, 50, 50, 0.8);
+}
 
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: rgba(50, 50, 50, 0.8);
-}
 header li {
-    float: left;
+	float: left;
 }
+
 header li a {
-	font-family: Sofia ; 
-    display: block;
-    color: #999;
-    text-align: center;
-    padding: 16px 50px;
-    text-decoration: none;
+	font-family: Sofia;
+	display: block;
+	color: #999;
+	text-align: center;
+	padding: 16px 50px;
+	text-decoration: none;
 }
+
 header li a:hover {
-    background-color: #45a256;
-    color: #eee;
+	background-color: #45a256;
+	color: #eee;
 }
+
 header li:last-child {
 	float: right;
 }
+
 header li:last-child a:hover {
 	color: white;
 	background-color: #000;
 }
-#wrapper{
+
+#wrapper {
 	padding: 10px;
-	max-width: 90%;
 	margin: 0 auto 0 auto;
 }
 
 /* //======  Enter Link   ====== */
-
-#scLink , #zLink {
+#scLink, #zLink {
 	border-radius: 5px;
 	display: inline;
 	margin-bottom: 10px;
-	width: 70%;
+	width: 65%;
 	height: 40px;
 	font-size: 15px;
 }
@@ -59,16 +61,17 @@ header li:last-child a:hover {
 }
 
 #sectionGetLink {
-	max-width: 40vw;
-	margin-right: 20px;
+	width: 40%;
+	margin-right: 2%;
 }
+
 #divGetLink {
 	padding: 20px;
 	border-radius: 10px;
 	background-color: #333;
 }
 
-#sectionGetLink h2{
+#sectionGetLink h2 {
 	color: #ddd;
 	margin: 0 0 10px 0;
 	text-align: center;
@@ -80,40 +83,44 @@ header li:last-child a:hover {
 	border: none;
 	background-color: #5a7;
 }
+
 .butload:hover {
 	background-color: #385;
 	color: #fff;
 }
+
 input[type="file"] {
-    display: none;
+	display: none;
 }
+
 .custom-file-upload {
 	border-radius: 5px;
 	background-color: #5a7;
-	margin-bottom: 5px; 
-    display: inline-block;
-    padding: 6px 12px;
-    cursor: pointer;
-    transition-duration: 0.2s;
+	margin-bottom: 5px;
+	display: inline-block;
+	padding: 6px 12px;
+	cursor: pointer;
+	transition-duration: 0.2s;
 }
+
 .custom-file-upload:hover {
 	background-color: #385;
 	color: #fff;
 }
 
 /* ==========  Show Result  ============== */
-
-#sectionResult{
-	max-width: 55vw;
+#sectionResult {
+	width: 58%;
 	border-radius: 10px;
 }
-#sectionResult h2{
+
+#sectionResult h2 {
 	color: #ddd;
 	text-align: center;
 	margin: 0 0 10px 0;
 }
 
-#ulResult{
+#ulResult {
 	padding: 0;
 }
 
@@ -132,17 +139,20 @@ input[type="file"] {
 	height: 60px;
 	align-items: center;
 }
+
 #sectionResult li img {
 	display: inline-block;
 	height: 50px;
 }
-#sectionResult li a{
+
+#sectionResult li a {
 	color: white;
 	padding: 0 10px 0 10px;
 	margin-left: 10px;
 	text-decoration: none;
 }
-#sectionResult li:hover{
+
+#sectionResult li:hover {
 	transition-duration: 0.2s;
 	box-shadow: 0 1px 5px #aaa;
 	background-color: #555;
@@ -150,42 +160,42 @@ input[type="file"] {
 }
 
 /* ========= ScrollBar ============ */
-/* width */
-::-webkit-scrollbar {
-    width: 7px;
+
+/* width */::-webkit-scrollbar {
+	width: 7px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-    background: #444;
-    border-radius: 5px;
+	background: #444;
+	border-radius: 5px;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: #999;
-    border-radius: 5px;
+	background: #999;
+	border-radius: 5px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: #fff; 
+	background: #fff;
 }
 
 /* =========  Reponsive  ========== */
+@media screen and (orientation:portrait) {
+	#sectionGetLink, #sectionResult {
+		max-width: 100%;
+		float: none;
+		width: 100%;
+	}
 
-@media screen and (max-width: 765px){
-    #sectionGetLink , #sectionResult{
-    	max-width: 100%;
-    	float: none;
-    	width: 100%;
-    }
-    #scLink , #zLink {
-    	width: 80%;
-    }
-}
+	#scLink, #zLink {
+		width: 80%;
+	}
 
-@media screen and (max-width: 620px){
-    header ul li:last-child, header ul li
-    {float: none;}
+	header ul li:last-child, header ul li {
+		float: none;
+	}
+
 }
