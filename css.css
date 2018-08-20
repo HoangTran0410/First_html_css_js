@@ -3,7 +3,12 @@ html body {
 	font-size: 1em;
 	margin: 0;
 	padding: 0;
+	
 	background-color: #222;
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	min-width:100vw;
+	min-height:100vh;
 }
 
 /* //======  Header   ========== */
@@ -69,7 +74,7 @@ header li:last-child a:hover {
 #divGetLink {
 	padding: 20px;
 	border-radius: 10px;
-	background-color: #333;
+	background-color: rgba(50, 50, 50, 0.8);
 }
 
 #sectionGetLink h2 {
@@ -122,8 +127,27 @@ input[type="file"] {
 	margin: 0 0 10px 0;
 }
 
+#sectionResult h2 input {
+	display: inline;
+	height: 1.3em;
+	border-radius: 2px;
+}
+#sectionResult h2 input:hover {
+	height: 1.5em;
+}
+#sectionResult h2 input:active {
+	height: 1.2em;
+}
+
 #ulResult {
 	padding: 0;
+}
+
+#loading {
+	display: none;
+	margin: auto;
+	width: 2em;
+	height: 2em;
 }
 
 #divResult {
@@ -131,11 +155,10 @@ input[type="file"] {
 	overflow: auto;
 	max-height: 80vh;
 	border-radius: 10px;
-	background-color: #333;
+	background-color: rgba(50, 50, 50, 0.8);
 }
 
 #sectionResult li {
-	width: 75%;
 	padding: 10px;
 	display: flex;
 	height: 60px;
@@ -157,7 +180,7 @@ input[type="file"] {
 #sectionResult li:hover {
 	transition-duration: 0.2s;
 	box-shadow: 0 1px 5px #aaa;
-	background-color: #555;
+	background-color: rgba(80, 80, 80, 0.8);
 	border-radius: 5px;
 }
 
@@ -165,6 +188,7 @@ input[type="file"] {
 
 /* width */::-webkit-scrollbar {
 	width: 7px;
+	height: 7px;
 }
 
 /* Track */
@@ -199,5 +223,4 @@ input[type="file"] {
 	header ul li:last-child, header ul li {
 		float: none;
 	}
-
 }
