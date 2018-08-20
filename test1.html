@@ -30,28 +30,33 @@
 			<section id="sectionGetLink">
 				<h2>GET LINK MUSIC</h2>
 				<div id="divGetLink">
-					<input type="search" id="scLink" placeholder="Soundcloud link here.." value="https://soundcloud.com/h3roapp3ntice/sets/future-bass">
+					<input type="search" id="scLink" placeholder="Soundcloud link here.." value="https://soundcloud.com/milo9627/sets/deep-house">
 					<input type="button" id="loadSc" class="butload" value="Get link">
 					<br>
 					<input type="search" id="zLink" placeholder="Zingmp3 ID Song here.." value="LmxmTLGaJkzSEcdymyFmZGyLWdZWJdxDd">
 					<input type="button" id="loadZ" class="butload" value="Get link">
 					<br>
 					<label class="custom-file-upload">
-					    <input type="file"/>
+					    <input type="file" id="inputFile" />
 					    Choose File Playlist
 					</label>
 				</div>
 			</section>
 
 			<section id="sectionResult">
-				<h2>RESULT</h2>
+				<h2>RESULT
+					<input id="sortButton" type="image" src="image/sort.png" title="Sort List Music">
+					<input id="delButton" type="image" src="image/x.png" title="Delete All Song">
+				</h2>
+				<img id="loading" src="https://loading.io/spinners/microsoft/lg.rotating-balls-spinner.gif" alt="Loading">
 				<div id="divResult">
 					<ul id="ulResult"></ul>
 				</div>
 			</section>
 		</div>
 
-		<footer></footer>
+		<footer>
+		</footer>
 
 	</body>
 </html>
