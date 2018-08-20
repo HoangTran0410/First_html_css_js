@@ -1,5 +1,6 @@
 html body {
 	font-family: Consolas;
+	font-size: 1em;
 	margin: 0;
 	padding: 0;
 	background-color: #222;
@@ -53,7 +54,7 @@ header li:last-child a:hover {
 	margin-bottom: 10px;
 	width: 65%;
 	height: 40px;
-	font-size: 15px;
+	font-size: 1em;
 }
 
 #sectionGetLink, #sectionResult {
@@ -78,6 +79,7 @@ header li:last-child a:hover {
 }
 
 .butload {
+	font-size: 1em;
 	border-radius: 5px;
 	height: 40px;
 	border: none;
@@ -182,7 +184,7 @@ input[type="file"] {
 	background: #fff;
 }
 
-/* =========  Reponsive  ========== */
+/* =========  Responsive  ========== */
 @media screen and (orientation:portrait) {
 	#sectionGetLink, #sectionResult {
 		max-width: 100%;
