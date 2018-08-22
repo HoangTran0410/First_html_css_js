@@ -4,7 +4,6 @@
 		<meta charset="UTF-8">
 		<title>HTML Learn</title>
 	
-		<link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
 		<link rel="stylesheet" type="text/css" href="css.css">
 
 		<!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.1/p5.min.js"></script>
@@ -19,9 +18,9 @@
 			<nav>
 				<ul>
 					<li><a href="#head">HOME</a></li>
-					<li><a href="#scLink">About</a></li>
-					<li><a href="#zLink">Contact</a></li>
-					<li><a href="#">LOG IN</a></li>
+					<li><a id="about" href="#">About</a></li>
+					<li><a href="https://www.facebook.com/people/Hoang-Tran/100004848287494" target="_blank">Contact</a></li>
+					<li><a id="login" href="#">LOG IN</a></li>
 				</ul>
 			</nav>
 		</header>
@@ -30,11 +29,8 @@
 			<section id="sectionGetLink">
 				<h2>GET LINK MUSIC</h2>
 				<div id="divGetLink">
-					<input type="search" id="scLink" placeholder="Soundcloud link here.." value="https://soundcloud.com/tz1zgtw0fbb7/sets/trap">
-					<input type="button" id="loadSc" class="butload" value="Get link">
-					<br>
-					<input type="search" id="zLink" placeholder="Zingmp3 ID Song here.." value="LmxmTLGaJkzSEcdymyFmZGyLWdZWJdxDd">
-					<input type="button" id="loadZ" class="butload" value="Get link">
+					<input type="search" id="link" placeholder="Soundcloud link here.." value="https://soundcloud.com/tz1zgtw0fbb7/sets/trap">
+					<input type="button" id="load" class="butload" value="Get link">
 					<br>
 					<label class="custom-file-upload">
 					    <input type="file" id="inputFile" />
@@ -44,15 +40,21 @@
 			</section>
 
 			<section id="sectionResult">
-				<h2>RESULT
+				<h2>RESULT: 
 					<input id="sortButton" type="image" src="image/sort.png" title="Sort List Music">
 					<input id="delButton" type="image" src="image/x.png" title="Delete All Song">
+					<input id="inpFilter" type="text" placeholder="Filter..">
 				</h2>
 				<img id="loading" src="https://loading.io/spinners/microsoft/lg.rotating-balls-spinner.gif" alt="Loading">
 				<div id="divResult">
 					<ul id="ulResult"></ul>
 				</div>
 			</section>
+		</div>
+	
+		<div id="alert">
+		  This is an alert box.
+		  <span id="closebtn">&otimes;</span> 
 		</div>
 
 		<footer>
