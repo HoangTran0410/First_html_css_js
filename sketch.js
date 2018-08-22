@@ -1,5 +1,4 @@
 
-let sortType = true; // increase: true , decrease: false
 let client_id = '587aa2d384f7333a886010d5f52f302a'; // Soundcloud
 
 let loadJSON = (url, success, fail) => {
@@ -30,6 +29,7 @@ let setLoading = (styleSet) => {
 }
 
 //============ Sort ====================
+let sortType = true; // increase: true , decrease: false
 
 let sortListSong = () => {
     let list = document.getElementById("ulResult");
@@ -55,7 +55,6 @@ let quickSort = (arr, left, right) => {
     return arr;
 }
 
-
 let partition = (arr, pivot, left, right) => {
     let pivotValue = arr[pivot].children[1].innerHTML.toLowerCase(),
         partitionIndex = left;
@@ -78,12 +77,42 @@ let swap = (arr, i, j) => {
     arr[j].parentNode.replaceChild(tempi, arr[j]);
 }
 
+// ============ Filter =================
+let filterSongs = () => {
+    let keyW, filter, ul, li, a, i;
+    keyW = document.getElementById('inpFilter');
+    filter = keyW.value.toUpperCase();
+    ul = document.getElementById("ulResult");
+    li = ul.getElementsByTagName('li');
+
+    // Loop through all list items, and hide those who don't match the search query
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
+
 // ============ Delete all song ==============
 let delChilds = (DivId) => {
     let p = document.getElementById(DivId);
     while(p.childElementCount > 0){
         p.removeChild(p.childNodes[0]);
     }
+}
+
+// ============  Custom  Alert  ==============
+let addAlertBox = (text, bgcolor, textcolor) => {
+    let aa = document.getElementById('alertArea');
+    let al = document.getElementById('alert');
+    al.childNodes[0].nodeValue = text;
+    al.style.backgroundColor = bgcolor;
+    al.style.display = 'block';
+
+    if(textcolor) al.style.color = textcolor;
 }
 
 // ============ Add Song ===================
@@ -110,62 +139,85 @@ let addAnchor = (DivId, nameA, linkA, linkImg) => {
 }
 
 window.onload = () => {
-    let sortbut = document.getElementById('sortButton');
-    sortbut.addEventListener('click', () => {
-        sortListSong();
-    });
+    var b = document.getElementsByTagName('body')[0];
+    b.addEventListener('click', (e) => {
+        switch(e.target.id){
+            case 'login':
+                addAlertBox('Log in for what \u211c No database yet', '#467');
+                break;
 
-    let delbut = document.getElementById('delButton');
-    delbut.addEventListener('click', () => {
-        delChilds('ulResult');
-    });
+            case 'about':
+                addAlertBox('Made by Hoang Tran. click Contact to goto my facebook \u2665', '#8fb', '#111');
+                break;
 
-    let sc = document.getElementById('loadSc');
-    sc.addEventListener('click', () => {
-        let link = document.getElementById('scLink').value;
-        loadJSON('https://api.soundcloud.com/resolve.json?url=' + link + '&client_id=' + client_id,
-            (result) => {
-                console.log(result);
-                let numTrack = 1,
-                    title, user, linkSC;
-                let ok = true;
+            case 'closebtn':
+                e.target.parentElement.style.display='none';
+                break; 
 
-                if (result.kind == "playlist") {
-                    numTrack = result.tracks.length;
-                    for (let i = 0; i < numTrack; i++) {
-                        title = result.tracks[i].title;
-                        user = result.tracks[i].user.username;
-                        linkSC = 'https://api.soundcloud.com/tracks/' +
-                            result.tracks[i].id +
-                            '/stream?client_id=' + client_id;
-                        addAnchor("ulResult", title, linkSC, result.tracks[i].artwork_url);
-                    }
+            case 'sortButton':
+                sortListSong();
+                break;
 
-                } else if (result.kind == "track") {
-                    title = result.title;
-                    user = result.user.username;
-                    linkSC = 'https://api.soundcloud.com/tracks/' + result.id +
-                        '/stream?client_id=' + client_id;
-                    addAnchor("ulResult", title, linkSC, result.artwork_url);
+            case 'delButton':
+                delChilds('ulResult');
+                break;
+
+            case 'load':
+                let link = document.getElementById('link').value;
+                if(link.indexOf('soundcloud.com') != -1){
+                    loadJSON('https://api.soundcloud.com/resolve.json?url=' + link + '&client_id=' + client_id,
+                        (data) => {
+                            console.log(data);
+                            let numTrack = 1, title, user, linkSC, ok = true;
+
+                            if (data.kind == "playlist") {
+                                numTrack = data.tracks.length;
+                                for (let i = 0; i < numTrack; i++) {
+                                    title = data.tracks[i].title;
+                                    user = data.tracks[i].user.username;
+                                    linkSC = 'https://api.soundcloud.com/tracks/' +
+                                        data.tracks[i].id +
+                                        '/stream?client_id=' + client_id;
+                                    addAnchor("ulResult", title, linkSC, data.tracks[i].artwork_url);
+                                }
+
+                            } else if (data.kind == "track") {
+                                title = data.title;
+                                user = data.user.username;
+                                linkSC = 'https://api.soundcloud.com/tracks/' + data.id +
+                                    '/stream?client_id=' + client_id;
+                                addAnchor("ulResult", title, linkSC, data.artwork_url);
+                            }
+                        },
+                        (e) => {
+                            addAlertBox("Error " + e + ". Please try another link", "#e44336");
+                        }
+                    );
+                }else{
+                    loadJSON("https://mp3.zing.vn/xhr/media/get-source?type=audio&key=" + link,
+                        (dataJson) => {
+                            if (dataJson.data) {
+                                let link = 'http:' + dataJson.data.source[128];
+                                let title = dataJson.data.title + " - " + dataJson.data.artists_names;
+                                let imgLink = dataJson.data.thumbnail;
+
+                                addAnchor("ulResult", title, link, imgLink);
+                            } else 
+                                addAlertBox("Error " + dataJson + ". Please try another link", "#e44336")
+                        },
+                        (e) => {
+                            addAlertBox("Error " + e + ". Please try another link", "#e44336");
+                        }
+                    );
                 }
-            }
-        );
-    });
+                break;
+        }
+    })
 
-    let zing = document.getElementById('loadZ');
-    zing.addEventListener('click', () => {
-        let ID = document.getElementById('zLink').value;
-        loadJSON("https://mp3.zing.vn/xhr/media/get-source?type=audio&key=" + ID,
-            (dataJson) => {
-                if (dataJson.data.source[128]) {
-                    let link = 'http:' + dataJson.data.source[128];
-                    let title = dataJson.data.title + " - " + dataJson.data.artists_names;
-                    let imgLink = dataJson.data.thumbnail;
-
-                    addAnchor("ulResult", title, link, imgLink);
-                }
-            });
-    });
+    document.getElementById('inpFilter')
+        .addEventListener('keyup', () => {
+            filterSongs();
+        });
 
     let inp = document.getElementById('inputFile');
     inp.addEventListener('change', (e) => {
@@ -181,9 +233,9 @@ window.onload = () => {
 
                 }
             );
-        } else {
+        } else if(inp.files[0].type.indexOf('image') != -1){
             document.getElementsByTagName('body')[0]
                 .setAttribute("style", "background-image: url(" + url + ")");
-        }
+        } else addAlertBox('This file type is not Support, try another files (image or json)\u2665', '#e44336');
     });
 }
