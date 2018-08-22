@@ -1,3 +1,5 @@
+@import 'https://fonts.googleapis.com/css?family=Sofia';
+
 html body {
 	font-family: Consolas;
 	font-size: 1em;
@@ -53,7 +55,7 @@ header li:last-child a:hover {
 }
 
 /* //======  Enter Link   ====== */
-#scLink, #zLink {
+#link {
 	border-radius: 5px;
 	display: inline;
 	margin-bottom: 10px;
@@ -177,11 +179,45 @@ input[type="file"] {
 	text-decoration: none;
 }
 
+#sectionResult li a:hover {
+	background-color: #556;
+}
+
 #sectionResult li:hover {
 	transition-duration: 0.2s;
 	box-shadow: 0 1px 5px #aaa;
 	background-color: rgba(80, 80, 80, 0.8);
 	border-radius: 5px;
+}
+
+/* =========   Alert ===============*/
+/* The alert message box */
+#alert {
+	display: none;
+	position: fixed;
+	bottom: 10px;
+	right: 10px;
+    padding: 20px;
+    background-color: #c44336; /* Red */
+    color: white;
+    margin-bottom: 15px;
+}
+
+/* The close button */
+#closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* When moving the mouse over the close button */
+#closebtn:hover {
+    color: black;
 }
 
 /* ========= ScrollBar ============ */
